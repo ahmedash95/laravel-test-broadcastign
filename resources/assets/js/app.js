@@ -18,3 +18,14 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: 'body'
 });
+
+import Echo from "laravel-echo"
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '4a1adf02e923c2e08d75'
+});
+window.Echo.channel('ash-channel')
+    .listen('TestEvent', (e) => {
+        console.log(e);
+});
